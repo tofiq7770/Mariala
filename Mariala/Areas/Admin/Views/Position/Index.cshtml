@@ -1,0 +1,48 @@
+﻿@model List<Position>
+@{
+    int count = 0;
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <a class="btn btn-warning" asp-action="create"  asp-controller="position">Create</a>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Settings
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Position item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td class="py-1">
+                                    @*   <img src="../../images/faces/face1.jpg" alt="image" />*@
+                                    @count
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    <a asp-action="update" asp-controller="position" asp-route-id="@item.Id" class="btn btn-inverse-success btn-success">Update<i class="mdi mdi-border-color"></i></a>
+                                    <a asp-action="delete" asp-controller="position" asp-route-id="@item.Id" class="btn btn-inverse-danger btn-danger">Delete<i class="mdi mdi-delete"></i></a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
